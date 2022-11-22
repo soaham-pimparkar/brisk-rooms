@@ -75,9 +75,9 @@ class fileController extends GetxController {
   }
 
   Future deleteFile(String filePath, String fileTempId) async {
+    await FirebaseStorage.instance.ref("files/$filePath").delete();
     await _firestore.doc("files/${fileTempId}").delete();
     //await _firestore.collection('files').where("fileId", isEqualTo: fileTempId).delete()
-    await FirebaseStorage.instance.ref("$filePath").delete();
   }
 
   Future<double> getRoomSize() async {

@@ -17,13 +17,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
-        apiKey: "AIzaSyDDYYincV14hTiGqILg4O0zHAONQjB_MJw",
-        authDomain: "brisk-aab2d.firebaseapp.com",
-        projectId: "brisk-aab2d",
-        storageBucket: "brisk-aab2d.appspot.com",
-        messagingSenderId: "564536195767",
-        appId: "1:564536195767:web:a17c51627b8d0cf5266b32",
-        measurementId: "G-Q3TYY0DCJD"),
+        apiKey: "AIzaSyB3f7soix96gvVtV1FLtMn7G69LT7aIYcA",
+        authDomain: "brisk-rooms.firebaseapp.com",
+        projectId: "brisk-rooms",
+        storageBucket: "brisk-rooms.appspot.com",
+        messagingSenderId: "172733504511",
+        appId: "1:172733504511:web:d149bcc93b56227d75a5ca",
+        measurementId: "G-77M9HSSWD0"),
   );
 
   runApp(MyApp());

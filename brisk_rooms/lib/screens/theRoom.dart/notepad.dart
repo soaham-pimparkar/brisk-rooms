@@ -15,15 +15,21 @@ import '../../utils/colors.dart';
 
 final _noteCtr = Get.put(noteController());
 
-class notepad extends StatelessWidget {
+class notepad extends StatefulWidget {
   final String tempCode;
   const notepad({required this.tempCode, Key? key}) : super(key: key);
 
   @override
+  State<notepad> createState() => _notepadState();
+}
+
+class _notepadState extends State<notepad> {
+  TextEditingController _noteEditCtr = TextEditingController();
+  @override
   Widget build(BuildContext context) {
     //final initialContent = _noteCtr.fetchContent(noteName: tempCode);
     return FutureBuilder(
-        future: _noteCtr.fetchContent(noteName: tempCode),
+        future: _noteCtr.fetchContent(noteName: widget.tempCode),
         builder: (_, snapshot) {
           if (snapshot.hasError) {
             return Center(
@@ -32,14 +38,28 @@ class notepad extends StatelessWidget {
           }
           if (snapshot.hasData) {
             final initialContent = snapshot.data.toString();
-            TextEditingController _noteEditCtr =
-                TextEditingController(text: initialContent);
+            _noteEditCtr.text = initialContent;
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(flex: 2, child: SizedBox.expand()),
+                Expanded(
+                    flex: 6,
+                    child: Container(
+                      child: FractionallySizedBox(
+                        widthFactor: 0.66,
+                        heightFactor: 0.33,
+                        child: ElevatedButton(
+                            onPressed: () async {
+                              await _noteCtr.fetchContent(
+                                  noteName: widget.tempCode);
+                              setState(
+                                  () => _noteEditCtr.text = initialContent);
+                            },
+                            child: Text('Refresh')),
+                      ),
+                    )),
                 Expanded(
                   flex: 34,
                   child: Container(
@@ -85,7 +105,7 @@ class notepad extends StatelessWidget {
                             onPressed: () async {
                               _noteCtr.updateContent(
                                   newContent: _noteEditCtr.text,
-                                  noteName: tempCode);
+                                  noteName: widget.tempCode);
                             },
                             child: Text('Save Note')),
                       ),

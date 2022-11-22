@@ -122,7 +122,7 @@ class filesView extends StatelessWidget {
                                     IconButton(
                                         onPressed: () async {
                                           await _files.deleteFile(
-                                              item.filePath, item.fileId);
+                                              item.fileId, item.fileId);
                                         },
                                         icon: Icon(
                                           Icons.delete,
