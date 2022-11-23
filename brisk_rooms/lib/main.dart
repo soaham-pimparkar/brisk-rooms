@@ -35,7 +35,9 @@ class MyApp extends StatelessWidget {
       BeamGuard(
         pathPatterns: ['/room/*'],
         check: (context, location) {
-          return _roomCtr.getAuthStatus;
+          print(_roomCtr.getAuthStatus);
+          //return _roomCtr.getAuthStatus;
+          return false;
         },
         beamToNamed: (_, __) => '/',
       ),
@@ -69,7 +71,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Brisk Rooms',
       darkTheme: darkish,
-      theme: ThemeData.light(),
+      theme: darkish,
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', title: 'Home', page: () => homePage()),

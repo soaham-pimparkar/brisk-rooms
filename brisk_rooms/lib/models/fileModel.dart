@@ -22,8 +22,8 @@ class fileModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'name': name,
       'fileId': fileId,
+      'name': name,
       'filePath': filePath,
       'fileUrl': fileUrl,
       'size': fileSize,
@@ -33,11 +33,11 @@ class fileModel {
 
   factory fileModel.fromMap(Map<String, dynamic> iMap) {
     return fileModel(
-      fileId: iMap['name'] ?? '',
-      filePath: iMap['filePath'] ?? '',
-      fileSize: iMap['fileSize'] ?? 0,
-      fileUrl: iMap['fileUrl'] ?? '',
+      fileId: iMap['fileId'] ?? '',
       name: iMap['name'] ?? '',
+      filePath: iMap['filePath'] ?? '',
+      fileUrl: iMap['fileUrl'] ?? '',
+      fileSize: iMap['size'] ?? 0,
       roomId: iMap['roomId'] ?? '',
       //type: iMap['type'] ?? ''
     );

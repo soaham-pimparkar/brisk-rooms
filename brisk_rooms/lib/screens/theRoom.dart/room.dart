@@ -7,11 +7,14 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../controllers/backendController.dart';
 import '../../controllers/fileController.dart';
+import '../../controllers/noteController.dart';
 import '../../controllers/roomController.dart';
 import '../../models/fileModel.dart';
 import '../../utils/colors.dart';
 import '../../utils/mySnackbar.dart';
 import 'filesView.dart';
+
+final _noteCtr = Get.put(noteController());
 
 final _roomCtr = Get.put(roomController());
 final _files = Get.put(fileController());
@@ -56,14 +59,27 @@ class roomInitial extends StatelessWidget {
           if (constraints.maxWidth > windowSize) {
             return Row(
               children: [
-                Expanded(
-                    flex: 3,
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-                      child: Center(child: filesView()),
-                    )),
-                Expanded(flex: 1, child: notepad(tempCode: roomCode))
+                Flexible(
+                  fit: FlexFit.tight,
+                  flex: 3,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 0,
+                    ),
+                    child: Center(
+                      child: filesView(),
+                    ),
+                  ),
+                ),
+                Flexible(
+                  fit: FlexFit.tight,
+                  flex: 1,
+                  child: notepad(
+                    tempCode: roomCode,
+                    //qSnapshot: snapshot,
+                  ),
+                ),
               ],
             );
           }
@@ -89,7 +105,10 @@ class roomInitial extends StatelessWidget {
                     color: Colors.transparent,
                     width: double.maxFinite,
                     height: 1000,
-                    child: notepad(tempCode: roomCode))
+                    child: notepad(
+                      tempCode: roomCode,
+                      //qSnapshot: snapshot,
+                    ))
               ],
             )),
           );

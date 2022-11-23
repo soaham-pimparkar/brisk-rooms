@@ -83,6 +83,7 @@ class filesView extends StatelessWidget {
                             itemCount: allFiles.length,
                             itemBuilder: (context, index) {
                               final item = allFiles[index].data();
+                              //print(item.fileId);
                               final String suffix = extension(item.name);
                               return ListTile(
                                 leading: chosenIcon(theSuffix: suffix),
@@ -121,8 +122,11 @@ class filesView extends StatelessWidget {
                                     ),
                                     IconButton(
                                         onPressed: () async {
+                                          //print(item.fileId);
+                                          //print(item.fileId);
+                                          //print(item.fileId);
                                           await _files.deleteFile(
-                                              item.fileId, item.fileId);
+                                              item.filePath, item.fileId);
                                         },
                                         icon: Icon(
                                           Icons.delete,

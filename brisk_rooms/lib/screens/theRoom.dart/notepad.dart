@@ -17,17 +17,34 @@ final _noteCtr = Get.put(noteController());
 
 class notepad extends StatefulWidget {
   final String tempCode;
-  const notepad({required this.tempCode, Key? key}) : super(key: key);
+  //final AsyncSnapshot qSnapshot;
+  const notepad({required this.tempCode, /*required this.qSnapshot,*/ Key? key})
+      : super(key: key);
 
   @override
   State<notepad> createState() => _notepadState();
 }
 
 class _notepadState extends State<notepad> {
-  TextEditingController _noteEditCtr = TextEditingController();
+  final _noteEditCtr = TextEditingController();
+
+  /*@override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+  }
+  */
+
   @override
   Widget build(BuildContext context) {
-    //final initialContent = _noteCtr.fetchContent(noteName: tempCode);
+    final initialContent = _noteCtr.fetchContent(noteName: widget.tempCode);
+    String useString = initialContent.toString();
     return FutureBuilder(
         future: _noteCtr.fetchContent(noteName: widget.tempCode),
         builder: (_, snapshot) {
@@ -81,6 +98,17 @@ class _notepadState extends State<notepad> {
                           scrollbarOrientation: ScrollbarOrientation.left,
                           child: SingleChildScrollView(
                             child: TextFormField(
+                              onChanged: (text) async {
+                                if (text.length >= useString.length + 10 ||
+                                    text.length + 9 <= useString.length) {
+                                  await _noteCtr.updateContent(
+                                      newContent: text,
+                                      noteName: widget.tempCode);
+                                  print(text);
+                                  useString = text;
+                                }
+                                ;
+                              },
                               style: TextStyle(
                                   color: cBackgroundColor,
                                   fontFamily: 'Montserrat',
@@ -103,7 +131,7 @@ class _notepadState extends State<notepad> {
                         heightFactor: 0.33,
                         child: ElevatedButton(
                             onPressed: () async {
-                              _noteCtr.updateContent(
+                              await _noteCtr.updateContent(
                                   newContent: _noteEditCtr.text,
                                   noteName: widget.tempCode);
                             },
@@ -117,3 +145,5 @@ class _notepadState extends State<notepad> {
         });
   }
 }
+
+//void uploadData(String content) async {}

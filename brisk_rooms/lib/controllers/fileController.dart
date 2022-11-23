@@ -41,6 +41,7 @@ class fileController extends GetxController {
     final data = await FilePicker.platform.pickFiles(
       allowMultiple: true,
       allowCompression: true,
+      withData: true,
     );
     for (var element in data!.files) {
       filesSize += element.size;
@@ -75,8 +76,8 @@ class fileController extends GetxController {
   }
 
   Future deleteFile(String filePath, String fileTempId) async {
-    await FirebaseStorage.instance.ref("files/$filePath").delete();
-    await _firestore.doc("files/${fileTempId}").delete();
+    await FirebaseStorage.instance.ref(filePath).delete();
+    await _firestore.doc("files/$fileTempId").delete();
     //await _firestore.collection('files').where("fileId", isEqualTo: fileTempId).delete()
   }
 

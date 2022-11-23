@@ -1,9 +1,11 @@
 import 'package:brisk_rooms/models/roomModel.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class roomController extends GetxController {
   late roomModel _roomInst;
   late String _roomCode;
+  final _notepad = TextEditingController();
   bool _isAuthenticated = false;
 
   String get getRoomCode => _roomCode;
