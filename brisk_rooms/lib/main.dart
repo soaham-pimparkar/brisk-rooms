@@ -11,7 +11,7 @@ import 'screens/createRoomPage.dart';
 import 'screens/home.dart';
 import 'screens/joinRoomPage.dart';
 
-final _roomCtr = roomController();
+final _roomCtr = Get.put(roomController());
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

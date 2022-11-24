@@ -33,7 +33,6 @@ class _notepadState extends State<notepad> {
     // TODO: implement dispose
     super.dispose();
   }
-
   @override
   void deactivate() {
     // TODO: implement deactivate

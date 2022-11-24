@@ -1,1 +1,1 @@
-const int windowSize = 768;
+const windowSize = 768;

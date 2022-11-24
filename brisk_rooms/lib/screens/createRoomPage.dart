@@ -37,17 +37,13 @@ class createRoomPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ElevatedButton(
-                onPressed: () {
-                  print(_roomCtr.getAuthStatus.toString());
-                },
-                child: Text('Get auth status')),
             Text('Create New Room',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     color: cLightColor,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.w900,
-                    fontSize: 48)),
+                    fontSize: 44)),
             SizedBox(height: 30),
             cForm(),
           ],
@@ -72,11 +68,16 @@ class _cFormState extends State<cForm> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
+    print(_roomCtr.getAuthStatus.toString());
     onCreateRoomPressed() async {
       if (_uniqueKey.currentState!.validate()) {
         try {
           await _noteCtr.createNote(noteName: roomId);
           _roomCtr.setAuthStatus(true);
+          print(_roomCtr.getAuthStatus.toString());
           await _backend.createRoomInst(roomId, _passwordController.text).then(
             (value) {
               //_roomCtr.setRoomData(roomModel.fromMap())
@@ -94,7 +95,7 @@ class _cFormState extends State<cForm> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 150),
+          padding: EdgeInsets.symmetric(vertical: 15, horizontal: width / 8),
           child: Form(
               key: _uniqueKey,
               child: Column(

@@ -16,15 +16,28 @@ import 'filesView.dart';
 
 final _noteCtr = Get.put(noteController());
 
-final _roomCtr = Get.put(roomController());
+final _roomCtr = Get.put(roomController(), permanent: true);
 final _files = Get.put(fileController());
 final _database = Get.put(backendController());
 
-class roomInitial extends StatelessWidget {
+class roomInitial extends StatefulWidget {
   const roomInitial({Key? key}) : super(key: key);
 
   @override
+  State<roomInitial> createState() => _roomInitialState();
+}
+
+class _roomInitialState extends State<roomInitial> {
+  @override
+  void deactivate() {
+    super.deactivate();
+    _roomCtr.setAuthStatus(false);
+    print('dispose function called');
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print(_roomCtr.getAuthStatus.toString());
     _roomCtr.setRoomCode(Get.parameters["roomName"]!);
     final roomCode = _roomCtr.getRoomCode;
     return Scaffold(
@@ -56,66 +69,92 @@ class roomInitial extends StatelessWidget {
           ),
         ),
         body: LayoutBuilder(builder: (_, constraints) {
-          if (constraints.maxWidth > windowSize) {
-            return Row(
-              children: [
-                ElevatedButton(
-                    onPressed: () {
-                      print(_roomCtr.getAuthStatus.toString());
-                    },
-                    child: Text('Get auth status')),
-                Flexible(
-                  fit: FlexFit.tight,
-                  flex: 3,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 0,
-                    ),
-                    child: Center(
-                      child: filesView(),
+          if (_roomCtr.getAuthStatus) {
+            //_roomCtr.setAuthStatus(false);
+            //print('auth state changed to false');
+            if (constraints.maxWidth > windowSize) {
+              return Row(
+                children: [
+                  Flexible(
+                    fit: FlexFit.tight,
+                    flex: 3,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 0,
+                      ),
+                      child: Center(
+                        child: filesView(),
+                      ),
                     ),
                   ),
-                ),
-                Flexible(
-                  fit: FlexFit.tight,
-                  flex: 1,
-                  child: notepad(
-                    tempCode: roomCode,
-                    //qSnapshot: snapshot,
-                  ),
-                ),
-              ],
-            );
-          }
-          return SingleChildScrollView(
-            child: (Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                    padding: EdgeInsets.all(10),
-                    color: Colors.transparent,
-                    width: double.maxFinite,
-                    height: 1000,
-                    child: filesView()),
-                Divider(
-                  color: cLightColor,
-                  thickness: 1,
-                  indent: 50,
-                  endIndent: 50,
-                ),
-                Container(
-                    padding: EdgeInsets.all(10),
-                    color: Colors.transparent,
-                    width: double.maxFinite,
-                    height: 1000,
+                  Flexible(
+                    fit: FlexFit.tight,
+                    flex: 1,
                     child: notepad(
                       tempCode: roomCode,
                       //qSnapshot: snapshot,
-                    ))
+                    ),
+                  ),
+                ],
+              );
+            }
+            return SingleChildScrollView(
+              child: (Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                      padding: EdgeInsets.all(40),
+                      color: Colors.transparent,
+                      width: double.maxFinite,
+                      height: 750,
+                      child: filesView()),
+                  Divider(
+                    color: cLightColor,
+                    thickness: 1,
+                    indent: 50,
+                    endIndent: 50,
+                  ),
+                  Container(
+                      padding: EdgeInsets.all(10),
+                      color: Colors.transparent,
+                      width: double.maxFinite,
+                      height: 750,
+                      child: notepad(
+                        tempCode: roomCode,
+                        //qSnapshot: snapshot,
+                      ))
+                ],
+              )),
+            );
+          }
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'You do not have access to this room!\nPlease try joining again',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w900,
+                      fontSize: 24,
+                      color: cLightColor),
+                ),
+                SizedBox(height: 35),
+                SizedBox(
+                  height: 35,
+                  width: 100,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Get.offNamed("/");
+                      },
+                      child: Icon(Icons.home)),
+                )
               ],
-            )),
+            ),
           );
         }));
     /*return Scaffold(

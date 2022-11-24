@@ -7,13 +7,14 @@ import '../utils/colors.dart';
 import '../utils/mySnackbar.dart';
 
 final _backend = backendController();
-final _roomCtr = roomController();
+final _roomCtr = Get.put(roomController(), permanent: true);
 
 class joinRoomPage extends StatelessWidget {
   const joinRoomPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print(_roomCtr.getAuthStatus.toString());
     return Scaffold(
       appBar: AppBar(
           leadingWidth: 200,
@@ -32,17 +33,13 @@ class joinRoomPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ElevatedButton(
-                onPressed: () {
-                  print(_roomCtr.getAuthStatus.toString());
-                },
-                child: Text('Get auth status')),
             Text('Join Room',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     color: cLightColor,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.w900,
-                    fontSize: 48)),
+                    fontSize: 44)),
             SizedBox(height: 30),
             jForm(),
           ],
@@ -67,6 +64,8 @@ class _jFormState extends State<jForm> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     onJoinRoomPressed() async {
       if (_uniqueKey.currentState!.validate()) {
         try {
@@ -96,7 +95,7 @@ class _jFormState extends State<jForm> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 150, vertical: 15),
+          padding: EdgeInsets.symmetric(horizontal: 150, vertical: width / 8),
           child: Form(
               key: _uniqueKey,
               child: Column(

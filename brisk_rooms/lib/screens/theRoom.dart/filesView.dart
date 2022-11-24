@@ -22,6 +22,9 @@ class filesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return GetBuilder(
       init: _files,
       builder: (ctr) {
@@ -72,13 +75,13 @@ class filesView extends StatelessWidget {
                       flex: 17,
                       child: Container(
                         margin: EdgeInsets.all(12),
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(width / 75),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
                             color: Colors.transparent,
                             border: Border.all(width: 2, color: cLightColor)),
                         child: ListView.builder(
-                            padding: EdgeInsets.all(20),
+                            padding: EdgeInsets.all(width / 75),
                             shrinkWrap: true,
                             itemCount: allFiles.length,
                             itemBuilder: (context, index) {

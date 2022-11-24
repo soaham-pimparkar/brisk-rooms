@@ -1,11 +1,10 @@
 import 'dart:ui';
 
+import 'package:brisk_rooms/controllers/roomController.dart';
 import 'package:brisk_rooms/utils/colors.dart';
 import 'package:brisk_rooms/utils/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../controllers/roomController.dart';
 
 final _roomCtr = Get.put(roomController(), permanent: true);
 
@@ -14,6 +13,9 @@ class homePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    print(_roomCtr.getAuthStatus.toString());
     return Scaffold(
       backgroundColor: cBackgroundColor,
       appBar: AppBar(
@@ -46,11 +48,6 @@ class homePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ElevatedButton(
-                          onPressed: () {
-                            print(_roomCtr.getAuthStatus.toString());
-                          },
-                          child: Text('Get auth status')),
                       Expanded(
                         flex: 60,
                         child: FractionallySizedBox(
@@ -111,8 +108,8 @@ class homePage extends StatelessWidget {
                   children: [
                     Container(
                       padding: EdgeInsets.all(20),
-                      width: 800,
-                      height: 400,
+                      width: 2 * width / 3,
+                      height: 2 * height / 3,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: cLightColor,
@@ -160,17 +157,11 @@ class homePage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ConstrainedBox(
-                      constraints: BoxConstraints(
-                          minHeight: 45,
-                          minWidth: 90,
-                          maxHeight: 675,
-                          maxWidth: 1200),
-                      child: Padding(
-                        padding: const EdgeInsets.all(32),
-                        child: Image.asset('assets/images/finalFlow.png',
-                            fit: BoxFit.contain),
-                      ),
+                    Container(
+                      width: 2 * width / 3,
+                      //padding: Edg,
+                      child: Image.asset('assets/images/finalFlow.png',
+                          fit: BoxFit.contain),
                     )
                   ],
                 ),
@@ -486,5 +477,4 @@ class joinRoomButton extends StatelessWidget {
 //faqs
 
 //bottom bar
-
 
