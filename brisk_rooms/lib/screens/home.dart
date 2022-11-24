@@ -26,14 +26,14 @@ class homePage extends StatelessWidget {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
             child: createRoomButton(),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
             child: joinRoomButton(),
           ),
-          SizedBox(width: 35)
+          SizedBox(width: width / 25)
         ],
       ),
       body: SingleChildScrollView(
@@ -310,8 +310,8 @@ class homePage extends StatelessWidget {
                 children: [
                   Container(
                     padding: EdgeInsets.all(15),
-                    width: 400,
-                    height: 400,
+                    width: 4 * width / 5,
+                    height: 4 * width / 5,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                         color: cLightColor,
@@ -398,7 +398,7 @@ class homePage extends StatelessWidget {
                               'soahampimparkar@gmail.com',
                               style: TextStyle(
                                   color: cBackgroundColor,
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w700),
                             )
                           ])

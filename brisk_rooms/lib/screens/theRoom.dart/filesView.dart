@@ -29,7 +29,7 @@ class filesView extends StatelessWidget {
       init: _files,
       builder: (ctr) {
         if (_files.loadingStatus == true) {
-          showSnackbar(context, "Uploading your file to cloud",
+          showSnackbar(context, "Uploading your file to cloud....",
               mDuration: Duration(seconds: 100));
         }
         if (_files.loadingStatus == false) {
@@ -57,7 +57,7 @@ class filesView extends StatelessWidget {
                                 fontSize: 28)),
                         Container(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 150, vertical: 100),
+                              horizontal: width / 6, vertical: 100),
                           child: SizedBox(
                               height: 40,
                               width: double.maxFinite,
@@ -89,6 +89,9 @@ class filesView extends StatelessWidget {
                               //print(item.fileId);
                               final String suffix = extension(item.name);
                               return ListTile(
+                                dense: true,
+                                //isThreeLine: true,
+                                //subtitle: Icon(Icons.home),
                                 leading: chosenIcon(theSuffix: suffix),
                                 title: Text(
                                   item.name,

@@ -95,7 +95,7 @@ class _jFormState extends State<jForm> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 150, vertical: width / 8),
+          padding: EdgeInsets.symmetric(horizontal: width / 8, vertical: 15),
           child: Form(
               key: _uniqueKey,
               child: Column(
