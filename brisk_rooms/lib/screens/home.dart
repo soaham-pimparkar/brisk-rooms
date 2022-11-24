@@ -5,6 +5,10 @@ import 'package:brisk_rooms/utils/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../controllers/roomController.dart';
+
+final _roomCtr = Get.put(roomController(), permanent: true);
+
 class homePage extends StatelessWidget {
   const homePage({Key? key}) : super(key: key);
 
@@ -42,6 +46,11 @@ class homePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            print(_roomCtr.getAuthStatus.toString());
+                          },
+                          child: Text('Get auth status')),
                       Expanded(
                         flex: 60,
                         child: FractionallySizedBox(

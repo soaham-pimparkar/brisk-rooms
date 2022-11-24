@@ -32,6 +32,11 @@ class joinRoomPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            ElevatedButton(
+                onPressed: () {
+                  print(_roomCtr.getAuthStatus.toString());
+                },
+                child: Text('Get auth status')),
             Text('Join Room',
                 style: TextStyle(
                     color: cLightColor,

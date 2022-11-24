@@ -11,7 +11,7 @@ import '../utils/colors.dart';
 import '../utils/mySnackbar.dart';
 
 final _backend = Get.put(backendController());
-final _roomCtr = Get.put(roomController());
+final _roomCtr = Get.put(roomController(), permanent: true);
 final _noteCtr = Get.put(noteController());
 
 class createRoomPage extends StatelessWidget {
@@ -37,6 +37,11 @@ class createRoomPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            ElevatedButton(
+                onPressed: () {
+                  print(_roomCtr.getAuthStatus.toString());
+                },
+                child: Text('Get auth status')),
             Text('Create New Room',
                 style: TextStyle(
                     color: cLightColor,

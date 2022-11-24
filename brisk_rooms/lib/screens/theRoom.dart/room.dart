@@ -59,6 +59,11 @@ class roomInitial extends StatelessWidget {
           if (constraints.maxWidth > windowSize) {
             return Row(
               children: [
+                ElevatedButton(
+                    onPressed: () {
+                      print(_roomCtr.getAuthStatus.toString());
+                    },
+                    child: Text('Get auth status')),
                 Flexible(
                   fit: FlexFit.tight,
                   flex: 3,
