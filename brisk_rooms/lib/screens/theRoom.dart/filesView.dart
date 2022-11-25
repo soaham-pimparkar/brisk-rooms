@@ -75,13 +75,13 @@ class filesView extends StatelessWidget {
                       flex: 17,
                       child: Container(
                         margin: EdgeInsets.all(12),
-                        padding: EdgeInsets.all(width / 75),
+                        padding: EdgeInsets.all(width / 100),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
                             color: Colors.transparent,
                             border: Border.all(width: 2, color: cLightColor)),
                         child: ListView.builder(
-                            padding: EdgeInsets.all(width / 75),
+                            padding: EdgeInsets.all(width / 100),
                             shrinkWrap: true,
                             itemCount: allFiles.length,
                             itemBuilder: (context, index) {
@@ -145,12 +145,12 @@ class filesView extends StatelessWidget {
                             }),
                       ),
                     ),
-                    Flexible(
+                    Expanded(
                         flex: 3,
                         child: Container(
                           child: FractionallySizedBox(
                               widthFactor: 0.66,
-                              heightFactor: 0.33,
+                              heightFactor: 0.5,
                               child: const uploadButton()),
                         ))
                   ],

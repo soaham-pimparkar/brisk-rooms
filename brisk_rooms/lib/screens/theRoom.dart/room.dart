@@ -1,3 +1,4 @@
+import 'package:brisk_rooms/screens/theRoom.dart/noAccessPage.dart';
 import 'package:brisk_rooms/screens/theRoom.dart/notepad.dart';
 import 'package:brisk_rooms/utils/consts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -28,15 +29,31 @@ class roomInitial extends StatefulWidget {
 }
 
 class _roomInitialState extends State<roomInitial> {
-  @override
+  /*@override
   void deactivate() {
     super.deactivate();
     _roomCtr.setAuthStatus(false);
     print('dispose function called');
-  }
+  }*/
+
+  /*@override
+  void initState() {
+    // TODO: implement initState
+    if (_roomCtr.getAuthStatus == false) {
+      print('changing routing to noaccess page');
+      Get.offNamed('/noaccess');
+    }
+    super.initState();
+  }*/
 
   @override
   Widget build(BuildContext context) {
+    if (_roomCtr.getAuthStatus == false) {
+      print('changing routing to noaccess page');
+      return noAccessPage();
+    }
+    _roomCtr.setAuthStatus(false);
+    print('building room page');
     print(_roomCtr.getAuthStatus.toString());
     _roomCtr.setRoomCode(Get.parameters["roomName"]!);
     final roomCode = _roomCtr.getRoomCode;
@@ -69,67 +86,66 @@ class _roomInitialState extends State<roomInitial> {
           ),
         ),
         body: LayoutBuilder(builder: (_, constraints) {
-          if (_roomCtr.getAuthStatus) {
-            //_roomCtr.setAuthStatus(false);
-            //print('auth state changed to false');
-            if (constraints.maxWidth > windowSize) {
-              return Row(
-                children: [
-                  Flexible(
-                    fit: FlexFit.tight,
-                    flex: 3,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 0,
-                      ),
-                      child: Center(
-                        child: filesView(),
-                      ),
+          //_roomCtr.setAuthStatus(false);
+          //print('auth state changed to false');
+          if (constraints.maxWidth > windowSize) {
+            return Row(
+              children: [
+                Flexible(
+                  fit: FlexFit.tight,
+                  flex: 3,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 0,
+                    ),
+                    child: Center(
+                      child: filesView(),
                     ),
                   ),
-                  Flexible(
-                    fit: FlexFit.tight,
-                    flex: 1,
+                ),
+                Flexible(
+                  fit: FlexFit.tight,
+                  flex: 1,
+                  child: notepad(
+                    tempCode: roomCode,
+                    //qSnapshot: snapshot,
+                  ),
+                ),
+              ],
+            );
+          }
+          return SingleChildScrollView(
+            child: (Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                    padding: EdgeInsets.all(10),
+                    color: Colors.transparent,
+                    width: double.maxFinite,
+                    height: 400,
+                    child: filesView()),
+                Divider(
+                  color: cLightColor,
+                  thickness: 1,
+                  indent: 50,
+                  endIndent: 50,
+                ),
+                Container(
+                    padding: EdgeInsets.all(10),
+                    color: Colors.transparent,
+                    width: double.maxFinite,
+                    height: 600,
                     child: notepad(
                       tempCode: roomCode,
                       //qSnapshot: snapshot,
-                    ),
-                  ),
-                ],
-              );
-            }
-            return SingleChildScrollView(
-              child: (Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                      padding: EdgeInsets.all(40),
-                      color: Colors.transparent,
-                      width: double.maxFinite,
-                      height: 750,
-                      child: filesView()),
-                  Divider(
-                    color: cLightColor,
-                    thickness: 1,
-                    indent: 50,
-                    endIndent: 50,
-                  ),
-                  Container(
-                      padding: EdgeInsets.all(10),
-                      color: Colors.transparent,
-                      width: double.maxFinite,
-                      height: 750,
-                      child: notepad(
-                        tempCode: roomCode,
-                        //qSnapshot: snapshot,
-                      ))
-                ],
-              )),
-            );
-          }
-          return Center(
+                    ))
+              ],
+            )),
+          );
+
+          /*return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -155,7 +171,7 @@ class _roomInitialState extends State<roomInitial> {
                 )
               ],
             ),
-          );
+          );*/
         }));
     /*return Scaffold(
         appBar: AppBar(

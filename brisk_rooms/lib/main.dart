@@ -1,3 +1,4 @@
+import 'package:brisk_rooms/screens/theRoom.dart/noAccessPage.dart';
 import 'package:brisk_rooms/screens/theRoom.dart/room.dart';
 import 'package:brisk_rooms/utils/colors.dart';
 import 'package:brisk_rooms/utils/themes.dart';
@@ -81,6 +82,10 @@ class MyApp extends StatelessWidget {
             page: () => createRoomPage()),
         GetPage(
             name: '/joinroom', title: 'Join Room', page: () => joinRoomPage()),
+        GetPage(
+            name: '/noaccess',
+            title: 'Access Denied',
+            page: () => noAccessPage()),
         GetPage(
             name: '/room/:roomName',
             title: 'Room ${Get.parameters["roomName"]}',

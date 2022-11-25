@@ -311,7 +311,7 @@ class homePage extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(15),
                     width: 4 * width / 5,
-                    height: 4 * width / 5,
+                    //height: 4 * width / 5,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
                         color: cLightColor,

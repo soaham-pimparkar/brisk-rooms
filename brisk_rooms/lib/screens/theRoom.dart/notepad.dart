@@ -65,7 +65,7 @@ class _notepadState extends State<notepad> {
                     child: Container(
                       child: FractionallySizedBox(
                         widthFactor: 0.66,
-                        heightFactor: 0.33,
+                        heightFactor: 0.5,
                         child: ElevatedButton(
                             onPressed: () async {
                               await _noteCtr.fetchContent(
@@ -127,7 +127,7 @@ class _notepadState extends State<notepad> {
                     child: Container(
                       child: FractionallySizedBox(
                         widthFactor: 0.66,
-                        heightFactor: 0.33,
+                        heightFactor: 0.5,
                         child: ElevatedButton(
                             onPressed: () async {
                               await _noteCtr.updateContent(
