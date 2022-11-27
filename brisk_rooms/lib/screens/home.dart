@@ -26,14 +26,14 @@ class homePage extends StatelessWidget {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(0, 12, 4, 12),
+            padding: const EdgeInsets.fromLTRB(0, 12, 3, 12),
             child: createRoomButton(),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(4, 12, 0, 12),
+            padding: const EdgeInsets.fromLTRB(3, 12, 0, 12),
             child: joinRoomButton(),
           ),
-          SizedBox(width: width / 25)
+          SizedBox(width: width / 100)
         ],
       ),
       body: SingleChildScrollView(
@@ -462,7 +462,7 @@ class joinRoomButton extends StatelessWidget {
         onPressed: () {
           Get.offNamed("/joinroom");
         },
-        child: Text('Join Room'));
+        child: Text('Join Room', style: TextStyle(fontSize: 14)));
   }
 }
 
