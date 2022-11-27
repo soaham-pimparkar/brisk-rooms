@@ -124,7 +124,7 @@ class _roomInitialState extends State<roomInitial> {
                     padding: EdgeInsets.all(10),
                     color: Colors.transparent,
                     width: double.maxFinite,
-                    height: 400,
+                    height: 550,
                     child: filesView()),
                 Divider(
                   color: cLightColor,

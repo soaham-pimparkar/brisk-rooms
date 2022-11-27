@@ -81,11 +81,11 @@ class _jFormState extends State<jForm> {
               Get.offNamed("/room/${_roomIDController.text}");
             }
             if (data == 'No such room has been created') {
-              showSnackbar(context, 'hi');
+              showSnackbar(context, 'Room does not exist');
             }
           });
         } catch (e) {
-          showSnackbar(context, "Your fear was true");
+          showSnackbar(context, e.toString());
         }
       }
     }

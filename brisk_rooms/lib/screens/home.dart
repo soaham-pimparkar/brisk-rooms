@@ -26,11 +26,11 @@ class homePage extends StatelessWidget {
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
+            padding: const EdgeInsets.fromLTRB(0, 12, 4, 12),
             child: createRoomButton(),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
+            padding: const EdgeInsets.fromLTRB(4, 12, 0, 12),
             child: joinRoomButton(),
           ),
           SizedBox(width: width / 25)
@@ -387,9 +387,9 @@ class homePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(
+                            /*SizedBox(
                               width: 30,
-                            ),
+                            ),*/
                             Icon(
                               Icons.email,
                               color: cBackgroundColor,

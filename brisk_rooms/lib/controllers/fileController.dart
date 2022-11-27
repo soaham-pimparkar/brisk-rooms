@@ -20,6 +20,15 @@ class fileController extends GetxController {
     update();
   }
 
+  bool _flag = false;
+
+  bool get flagStatus => _flag;
+
+  setFlag(bool val) {
+    _flag = val;
+    update();
+  }
+
   Stream<QuerySnapshot<fileModel>> getFilesAsStream() {
     return _firestore
         .collection("files")

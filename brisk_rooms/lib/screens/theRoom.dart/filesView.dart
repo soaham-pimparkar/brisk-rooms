@@ -24,15 +24,32 @@ class filesView extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    /*bool flag = false;
+    bool get flagStatus => flag;
+
+  setIsLoading(bool val) {
+    flag = val;
+  }*/
 
     return GetBuilder(
       init: _files,
       builder: (ctr) {
         if (_files.loadingStatus == true) {
-          showSnackbar(context, "Uploading your file to cloud....",
-              mDuration: Duration(seconds: 100));
+          /*showSnackbar(context, "Uploading your file to cloud....",
+              mDuration: Duration(seconds: 100));*/
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Row(
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(width: 20),
+                Text("Uploading your files to cloud"),
+              ],
+            ),
+            backgroundColor: cHighColor,
+            duration: Duration(seconds: 100),
+          ));
         }
-        if (_files.loadingStatus == false) {
+        if (_files.loadingStatus == false && _files.flagStatus == false) {
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
         }
         return StreamBuilder(
@@ -175,16 +192,25 @@ class uploadButton extends StatelessWidget {
         onPressed: () async {
           await _files.uploadFile(_roomCtr.getRoomCode).then(
             (value) {
-              if (value == "roomSize") {
+              if (value == "Room capacity exceeded") {
+                _files.setFlag(true);
                 showSnackbar(
                   context,
-                  "Size of the room is greater than 20MB\nDelete some files",
+                  "Size of the room is greater than 50MB\nDelete some files",
                 );
-              } else if (value == "filesSize") {
+                Future.delayed(Duration(seconds: 4), () {
+                  _files.setFlag(false);
+                });
+              } else if (value ==
+                  "Uploading the selected files will exceed the room capacity") {
+                _files.setFlag(true);
                 showSnackbar(
                   context,
-                  "Size of the room will greater than 20MB",
+                  "Size of the room will greater than 50MB",
                 );
+                Future.delayed(Duration(seconds: 4), () {
+                  _files.setFlag(false);
+                });
               }
             },
           );
