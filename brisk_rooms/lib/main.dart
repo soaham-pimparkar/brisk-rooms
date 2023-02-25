@@ -11,6 +11,7 @@ import 'controllers/roomController.dart';
 import 'screens/createRoomPage.dart';
 import 'screens/home.dart';
 import 'screens/joinRoomPage.dart';
+import 'aid.dart';
 
 final _roomCtr = Get.put(roomController());
 
@@ -18,13 +19,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
-        apiKey: "AIzaSyB3f7soix96gvVtV1FLtMn7G69LT7aIYcA",
-        authDomain: "brisk-rooms.firebaseapp.com",
+        apiKey: theApiKey,
+        authDomain: theAuthDomain,
         projectId: "brisk-rooms",
-        storageBucket: "brisk-rooms.appspot.com",
-        messagingSenderId: "172733504511",
-        appId: "1:172733504511:web:d149bcc93b56227d75a5ca",
-        measurementId: "G-77M9HSSWD0"),
+        storageBucket: theStorageBucket,
+        messagingSenderId: theMessageSenderID,
+        appId: theAppID,
+        measurementId: theMeasurementID),
   );
 
   runApp(MyApp());
