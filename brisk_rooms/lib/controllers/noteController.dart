@@ -1,5 +1,4 @@
 import 'package:brisk_rooms/controllers/roomController.dart';
-import 'package:brisk_rooms/models/roomModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +24,7 @@ class noteController extends GetxController {
 
   Future<void> updateContent(
       {required String newContent, required String noteName}) async {
-    final docRef = await _firestore.doc("notes/$noteName");
+    final docRef = _firestore.doc("notes/$noteName");
     await docRef.update({'noteContent': newContent});
   }
 }

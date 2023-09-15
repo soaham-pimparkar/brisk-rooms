@@ -1,4 +1,3 @@
-import 'package:brisk_rooms/utils/consts.dart';
 import 'package:brisk_rooms/utils/mySnackbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +36,7 @@ class filesView extends StatelessWidget {
         if (_files.loadingStatus == true) {
           /*showSnackbar(context, "Uploading your file to cloud....",
               mDuration: Duration(seconds: 100));*/
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Row(
               children: [
                 CircularProgressIndicator(),
@@ -66,7 +65,7 @@ class filesView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text("No files have been uploaded yet",
+                        const Text("No files have been uploaded yet",
                             style: TextStyle(
                                 color: cLightColor,
                                 fontFamily: 'Montserrat',
@@ -75,10 +74,10 @@ class filesView extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: width / 6, vertical: 100),
-                          child: SizedBox(
+                          child: const SizedBox(
                               height: 40,
                               width: double.maxFinite,
-                              child: const uploadButton()),
+                              child: uploadButton()),
                         )
                         //uploadButton()
                       ]));
@@ -91,7 +90,7 @@ class filesView extends StatelessWidget {
                     Expanded(
                       flex: 17,
                       child: Container(
-                        margin: EdgeInsets.all(12),
+                        margin: const EdgeInsets.all(12),
                         padding: EdgeInsets.all(width / 100),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(40),
@@ -112,7 +111,7 @@ class filesView extends StatelessWidget {
                                 leading: chosenIcon(theSuffix: suffix),
                                 title: Text(
                                   item.name,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: cLightColor,
                                       fontFamily: 'Montserrat',
                                       fontWeight: FontWeight.w900,
@@ -123,7 +122,7 @@ class filesView extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     IconButton(
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.download,
                                         color: cHighColor,
                                         size: 25,
@@ -134,11 +133,11 @@ class filesView extends StatelessWidget {
                                           await launchUrl(_url);
                                         } catch (e) {
                                           ScaffoldMessenger.of(context)
-                                              .showSnackBar(SnackBar(
+                                              .showSnackBar(const SnackBar(
                                             content:
                                                 Text("Error while downloading"),
                                             duration:
-                                                const Duration(seconds: 4),
+                                                Duration(seconds: 4),
                                           ));
                                         }
                                       },
@@ -151,7 +150,7 @@ class filesView extends StatelessWidget {
                                           await _files.deleteFile(
                                               item.filePath, item.fileId);
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.delete,
                                           color: cHighColor,
                                           size: 25,
@@ -165,10 +164,10 @@ class filesView extends StatelessWidget {
                     Expanded(
                         flex: 3,
                         child: Container(
-                          child: FractionallySizedBox(
+                          child: const FractionallySizedBox(
                               widthFactor: 0.66,
                               heightFactor: 0.5,
-                              child: const uploadButton()),
+                              child: uploadButton()),
                         ))
                   ],
                 );
@@ -176,7 +175,7 @@ class filesView extends StatelessWidget {
               /*if (!snapshot.hasData) {
                 showSnackbar(context, "Unable to load files, Please retry");
               }*/
-              return (CircularProgressIndicator(color: cLightColor));
+              return (const CircularProgressIndicator(color: cLightColor));
             });
       },
     );
@@ -198,7 +197,7 @@ class uploadButton extends StatelessWidget {
                   context,
                   "Size of the room is greater than 50MB\nDelete some files",
                 );
-                Future.delayed(Duration(seconds: 4), () {
+                Future.delayed(const Duration(seconds: 4), () {
                   _files.setFlag(false);
                 });
               } else if (value ==
@@ -208,14 +207,14 @@ class uploadButton extends StatelessWidget {
                   context,
                   "Size of the room will greater than 50MB",
                 );
-                Future.delayed(Duration(seconds: 4), () {
+                Future.delayed(const Duration(seconds: 4), () {
                   _files.setFlag(false);
                 });
               }
             },
           );
         },
-        child: Text('Upload Files'));
+        child: const Text('Upload Files'));
   }
 }
 
@@ -226,51 +225,51 @@ class chosenIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (theSuffix == '.jpg') {
-      return Icon(
+      return const Icon(
         color: cHighColor,
         Icons.image,
       );
     }
     if (theSuffix == '.png') {
-      return Icon(
+      return const Icon(
         color: cHighColor,
         Icons.image_outlined,
       );
     }
     if (theSuffix == '.pdf') {
-      return Icon(
+      return const Icon(
         color: cHighColor,
         Icons.picture_as_pdf,
       );
     }
     if (theSuffix == '.jpeg') {
-      return Icon(
+      return const Icon(
         color: cHighColor,
         Icons.image_sharp,
       );
     }
     if (theSuffix == '.mp3') {
-      return Icon(
+      return const Icon(
         color: cHighColor,
         Icons.audio_file,
       );
     }
     if (theSuffix == '.txt') {
-      return Icon(color: cHighColor, Icons.note);
+      return const Icon(color: cHighColor, Icons.note);
     }
     if (theSuffix == '.mp4') {
-      return Icon(color: cHighColor, Icons.video_file);
+      return const Icon(color: cHighColor, Icons.video_file);
     }
     if (theSuffix == '.svg') {
-      return Icon(color: cHighColor, Icons.photo);
+      return const Icon(color: cHighColor, Icons.photo);
     }
     if (theSuffix == '.pptx') {
-      return Icon(color: cHighColor, Icons.picture_in_picture);
+      return const Icon(color: cHighColor, Icons.picture_in_picture);
     }
     if (theSuffix == '.docx') {
-      return Icon(color: cHighColor, Icons.notes);
+      return const Icon(color: cHighColor, Icons.notes);
     }
-    return Icon(color: cHighColor, Icons.file_open);
+    return const Icon(color: cHighColor, Icons.file_open);
   }
 }
 

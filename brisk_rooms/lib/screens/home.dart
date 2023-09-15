@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:brisk_rooms/controllers/roomController.dart';
 import 'package:brisk_rooms/utils/colors.dart';
@@ -25,12 +24,12 @@ class homePage extends StatelessWidget {
           fit: BoxFit.fitWidth,
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 12, 3, 12),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(0, 12, 3, 12),
             child: createRoomButton(),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(3, 12, 0, 12),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(3, 12, 0, 12),
             child: joinRoomButton(),
           ),
           SizedBox(width: width / 100)
@@ -60,7 +59,7 @@ class homePage extends StatelessWidget {
                         ),
                       ),
                       //SizedBox(width: 30),
-                      Expanded(
+                      const Expanded(
                         flex: 2,
                         child: VerticalDivider(
                           indent: 100,
@@ -70,7 +69,7 @@ class homePage extends StatelessWidget {
                         ),
                       ),
                       //SizedBox(width: 30),
-                      Expanded(
+                      const Expanded(
                         flex: 35,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -80,7 +79,7 @@ class homePage extends StatelessWidget {
                                 width: 300,
                                 height: 40,
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(
+                                  padding: EdgeInsets.symmetric(
                                       horizontal: 20),
                                   child: Hero(
                                       tag: 'create', child: createRoomButton()),
@@ -90,7 +89,7 @@ class homePage extends StatelessWidget {
                                 width: 300,
                                 height: 40,
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(
+                                  padding: EdgeInsets.symmetric(
                                       horizontal: 20),
                                   child: Hero(
                                       tag: 'join', child: joinRoomButton()),
@@ -107,7 +106,7 @@ class homePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       width: 2 * width / 3,
                       height: 2 * height / 3,
                       decoration: BoxDecoration(
@@ -117,7 +116,7 @@ class homePage extends StatelessWidget {
                       child: Center(
                         child: RichText(
                             textAlign: TextAlign.center,
-                            text: TextSpan(children: <TextSpan>[
+                            text: const TextSpan(children: <TextSpan>[
                               TextSpan(
                                   text: '“',
                                   style: TextStyle(
@@ -145,7 +144,7 @@ class homePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                Divider(
+                const Divider(
                   color: cLightColor,
                   thickness: 1,
                   indent: 100,
@@ -157,7 +156,7 @@ class homePage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 2 * width / 3,
                       //padding: Edg,
                       child: Image.asset('assets/images/finalFlow.png',
@@ -165,7 +164,7 @@ class homePage extends StatelessWidget {
                     )
                   ],
                 ),
-                Divider(
+                const Divider(
                   color: cLightColor,
                   thickness: 1,
                   indent: 100,
@@ -182,7 +181,7 @@ class homePage extends StatelessWidget {
                         flex: 4,
                         child: Padding(
                           padding:
-                              EdgeInsets.symmetric(vertical: 0, horizontal: 50),
+                              const EdgeInsets.symmetric(vertical: 0, horizontal: 50),
                           child: Image.asset(
                             'assets/images/logo_b.png',
                             fit: BoxFit.fitWidth,
@@ -193,8 +192,8 @@ class homePage extends StatelessWidget {
                           flex: 8,
                           child: SizedBox.expand(
                             child: Container(
-                                margin: EdgeInsets.all(30),
-                                padding: EdgeInsets.all(10),
+                                margin: const EdgeInsets.all(30),
+                                padding: const EdgeInsets.all(10),
                                 width: double.maxFinite,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(50),
@@ -211,21 +210,21 @@ class homePage extends StatelessWidget {
                                         width: 30,
                                         child: Image.asset(
                                             'assets/images/instaLogo.png')),
-                                    Text(
+                                    const Text(
                                       '@s.o.a.h.a.m',
                                       style: TextStyle(
                                           color: cBackgroundColor,
                                           fontSize: 18,
                                           fontWeight: FontWeight.w700),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 30,
                                     ),
-                                    Icon(
+                                    const Icon(
                                       Icons.email,
                                       color: cBackgroundColor,
                                     ),
-                                    Text(
+                                    const Text(
                                       'soahampimparkar@gmail.com',
                                       style: TextStyle(
                                           color: cBackgroundColor,
@@ -235,7 +234,7 @@ class homePage extends StatelessWidget {
                                   ],
                                 )),
                           )),
-                      Expanded(
+                      const Expanded(
                           flex: 2,
                           child: SizedBox.expand(
                             child: Column(
@@ -274,29 +273,29 @@ class homePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                  padding: EdgeInsets.all(30),
+                  padding: const EdgeInsets.all(30),
                   child: Image.asset(
                     'assets/images/logo_b_s.png',
                     fit: BoxFit.fitWidth,
                   )),
-              SizedBox(
+              const SizedBox(
                   width: 300,
                   height: 30,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 5),
                     child: Hero(tag: 'create', child: createRoomButton()),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              SizedBox(
+              const SizedBox(
                   width: 300,
                   height: 30,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 5),
                     child: Hero(tag: 'join', child: joinRoomButton()),
                   )),
-              Divider(
+              const Divider(
                 color: cLightColor,
                 thickness: 1,
                 indent: 50,
@@ -309,7 +308,7 @@ class homePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     width: 4 * width / 5,
                     //height: 4 * width / 5,
                     decoration: BoxDecoration(
@@ -319,7 +318,7 @@ class homePage extends StatelessWidget {
                     child: Center(
                       child: RichText(
                           textAlign: TextAlign.center,
-                          text: TextSpan(children: <TextSpan>[
+                          text: const TextSpan(children: <TextSpan>[
                             TextSpan(
                                 text: '“',
                                 style: TextStyle(
@@ -347,15 +346,15 @@ class homePage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Container(
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
                 child: Image.asset('assets/images/finalFlow.png',
                     fit: BoxFit.fitWidth),
               ),
               Container(
-                  margin: EdgeInsets.all(30),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(30),
+                  padding: const EdgeInsets.all(10),
                   width: double.maxFinite,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
@@ -375,7 +374,7 @@ class homePage extends StatelessWidget {
                                 width: 30,
                                 child:
                                     Image.asset('assets/images/instaLogo.png')),
-                            Text(
+                            const Text(
                               '@s.o.a.h.a.m',
                               style: TextStyle(
                                   color: cBackgroundColor,
@@ -383,7 +382,7 @@ class homePage extends StatelessWidget {
                                   fontWeight: FontWeight.w700),
                             ),
                           ]),
-                      Row(
+                      const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -404,7 +403,7 @@ class homePage extends StatelessWidget {
                           ])
                     ],
                   )),
-              Column(
+              const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -427,7 +426,7 @@ class homePage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               )
             ],
@@ -448,7 +447,7 @@ class createRoomButton extends StatelessWidget {
         onPressed: () {
           Get.offNamed("/createroom");
         },
-        child: Text('Create Room'));
+        child: const Text('Create Room'));
   }
 }
 
@@ -462,7 +461,7 @@ class joinRoomButton extends StatelessWidget {
         onPressed: () {
           Get.offNamed("/joinroom");
         },
-        child: Text('Join Room', style: TextStyle(fontSize: 14)));
+        child: const Text('Join Room', style: TextStyle(fontSize: 14)));
   }
 }
 

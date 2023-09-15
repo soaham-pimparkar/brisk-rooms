@@ -1,6 +1,5 @@
 import 'package:brisk_rooms/controllers/roomController.dart';
 import 'package:flutter/material.dart';
-import 'package:random_string/random_string.dart';
 import 'package:get/get.dart';
 import '../controllers/backendController.dart';
 import '../utils/colors.dart';
@@ -27,8 +26,8 @@ class joinRoomPage extends StatelessWidget {
               fit: BoxFit.fitWidth,
             ),
           ),
-          title: Text('Join Room')),
-      body: Center(
+          title: const Text('Join Room')),
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,7 +103,7 @@ class _jFormState extends State<jForm> {
                 children: [
                   TextFormField(
                     controller: _roomIDController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         hintText: 'Room ID', labelText: 'Enter Room ID:'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -113,7 +112,7 @@ class _jFormState extends State<jForm> {
                       return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   TextFormField(
@@ -136,7 +135,7 @@ class _jFormState extends State<jForm> {
                               : const Icon(Icons.visibility),
                         )),
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   Hero(
                     tag: 'join',
                     child: SizedBox(
@@ -144,7 +143,7 @@ class _jFormState extends State<jForm> {
                       width: 300,
                       child: ElevatedButton(
                           onPressed: onJoinRoomPressed,
-                          child: Text('Enter Room')),
+                          child: const Text('Enter Room')),
                     ),
                   )
                 ],

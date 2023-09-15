@@ -9,9 +9,7 @@ import '../../controllers/backendController.dart';
 import '../../controllers/fileController.dart';
 import '../../controllers/noteController.dart';
 import '../../controllers/roomController.dart';
-import '../../models/fileModel.dart';
 import '../../utils/colors.dart';
-import '../../utils/mySnackbar.dart';
 import 'filesView.dart';
 
 final _noteCtr = Get.put(noteController());

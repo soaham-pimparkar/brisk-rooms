@@ -6,11 +6,7 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:path/path.dart';
 
-import '../../controllers/backendController.dart';
-import '../../controllers/fileController.dart';
 import '../../controllers/noteController.dart';
-import '../../controllers/roomController.dart';
-import '../../models/fileModel.dart';
 import '../../utils/colors.dart';
 
 final _noteCtr = Get.put(noteController());

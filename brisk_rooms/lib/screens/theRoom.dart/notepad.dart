@@ -1,16 +1,7 @@
-import 'package:brisk_rooms/utils/consts.dart';
-import 'package:brisk_rooms/utils/mySnackbar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:path/path.dart';
 
-import '../../controllers/backendController.dart';
-import '../../controllers/fileController.dart';
 import '../../controllers/noteController.dart';
-import '../../controllers/roomController.dart';
-import '../../models/fileModel.dart';
 import '../../utils/colors.dart';
 
 final _noteCtr = Get.put(noteController());
@@ -48,7 +39,7 @@ class _notepadState extends State<notepad> {
         future: _noteCtr.fetchContent(noteName: widget.tempCode),
         builder: (_, snapshot) {
           if (snapshot.hasError) {
-            return Center(
+            return const Center(
               child: Text("Error loading notepad :/"),
             );
           }
@@ -73,7 +64,7 @@ class _notepadState extends State<notepad> {
                               setState(
                                   () => _noteEditCtr.text = initialContent);
                             },
-                            child: Text('Refresh')),
+                            child: const Text('Refresh')),
                       ),
                     )),
                 Expanded(
@@ -82,9 +73,9 @@ class _notepadState extends State<notepad> {
                       height: double.maxFinite,
                       width: double.maxFinite,
                       color: Colors.transparent,
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       child: Container(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25),
                             color: cLightColor,
@@ -93,7 +84,7 @@ class _notepadState extends State<notepad> {
                           //always show scrollbar
                           thickness: 50, //width of scrollbar
                           radius:
-                              Radius.circular(20), //corner radius of scrollbar
+                              const Radius.circular(20), //corner radius of scrollbar
                           scrollbarOrientation: ScrollbarOrientation.left,
                           child: SingleChildScrollView(
                             child: TextFormField(
@@ -106,9 +97,8 @@ class _notepadState extends State<notepad> {
                                   print(text);
                                   useString = text;
                                 }
-                                ;
                               },
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: cBackgroundColor,
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.w900,
@@ -134,13 +124,13 @@ class _notepadState extends State<notepad> {
                                   newContent: _noteEditCtr.text,
                                   noteName: widget.tempCode);
                             },
-                            child: Text('Save Note')),
+                            child: const Text('Save Note')),
                       ),
                     ))
               ],
             );
           }
-          return Center(child: Text("Something went wrong, please try again"));
+          return const Center(child: Text("Something went wrong, please try again"));
         });
   }
 }

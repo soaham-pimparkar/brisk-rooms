@@ -1,6 +1,5 @@
 import 'package:brisk_rooms/screens/theRoom.dart/noAccessPage.dart';
 import 'package:brisk_rooms/screens/theRoom.dart/room.dart';
-import 'package:brisk_rooms/utils/colors.dart';
 import 'package:brisk_rooms/utils/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:beamer/beamer.dart';
 
 import 'controllers/roomController.dart';
+import 'firebase_options.dart';
 import 'screens/createRoomPage.dart';
 import 'screens/home.dart';
 import 'screens/joinRoomPage.dart';
@@ -18,14 +18,15 @@ final _roomCtr = Get.put(roomController());
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
+    options: DefaultFirebaseOptions.currentPlatform,
+    /*FirebaseOptions(
         apiKey: theApiKey,
         authDomain: theAuthDomain,
         projectId: "brisk-rooms",
         storageBucket: theStorageBucket,
         messagingSenderId: theMessageSenderID,
         appId: theAppID,
-        measurementId: theMeasurementID),
+        measurementId: theMeasurementID),*/
   );
 
   runApp(MyApp());
@@ -76,21 +77,21 @@ class MyApp extends StatelessWidget {
       theme: darkish,
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', title: 'Home', page: () => homePage()),
+        GetPage(name: '/', title: 'Home', page: () => const homePage()),
         GetPage(
             name: '/createroom',
             title: 'Create Room',
-            page: () => createRoomPage()),
+            page: () => const createRoomPage()),
         GetPage(
-            name: '/joinroom', title: 'Join Room', page: () => joinRoomPage()),
+            name: '/joinroom', title: 'Join Room', page: () => const joinRoomPage()),
         GetPage(
             name: '/noaccess',
             title: 'Access Denied',
-            page: () => noAccessPage()),
+            page: () => const noAccessPage()),
         GetPage(
             name: '/room/:roomName',
             title: 'Room ${Get.parameters["roomName"]}',
-            page: () => roomInitial()),
+            page: () => const roomInitial()),
       ],
     );
   }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
@@ -27,7 +26,7 @@ ThemeData darkish = ThemeData(
   fontFamily: 'Montserrat',
   scaffoldBackgroundColor: cBackgroundColor,
   //scrollbarTheme: ScrollbarThemeData(),
-  snackBarTheme: SnackBarThemeData(
+  snackBarTheme: const SnackBarThemeData(
     contentTextStyle: TextStyle(
         color: cBackgroundColor,
         fontFamily: 'Montserrat',
@@ -38,75 +37,73 @@ ThemeData darkish = ThemeData(
     actionTextColor: cBackgroundColor,
     disabledActionTextColor: cBackgroundColor,
   ),
-  textTheme: TextTheme(
-    button: TextStyle(
+  textTheme: const TextTheme(
+    labelLarge: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    headline1: TextStyle(
+    displayLarge: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    headline2: TextStyle(
+    displayMedium: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    headline3: TextStyle(
+    displaySmall: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    headline4: TextStyle(
+    headlineMedium: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    headline5: TextStyle(
+    headlineSmall: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    headline6: TextStyle(
+    titleLarge: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    subtitle1: TextStyle(
+    titleMedium: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    subtitle2: TextStyle(
+    titleSmall: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    bodyText1: TextStyle(
+    bodyLarge: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    bodyText2: TextStyle(
+    bodyMedium: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    caption: TextStyle(
+    bodySmall: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
-    overline: TextStyle(
+    labelSmall: TextStyle(
         color: cLightColor,
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w600),
   ),
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
       color: Colors.transparent,
       shadowColor: Colors.transparent,
       //elevation: 20,
       shape: Border(bottom: BorderSide(color: cLightColor, width: 1))),
   elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-          textStyle:
-              TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600),
-          primary: cHighColor,
-          onPrimary: cLightColor,
+          foregroundColor: cLightColor, backgroundColor: cHighColor, textStyle:
+              const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.w600),
           elevation: 7,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
-              side: BorderSide(color: cLightColor)))),
+              side: const BorderSide(color: cLightColor)))),
   /*elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(cHighColor),

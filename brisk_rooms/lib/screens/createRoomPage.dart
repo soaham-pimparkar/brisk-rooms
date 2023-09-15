@@ -1,6 +1,4 @@
 import 'package:brisk_rooms/controllers/backendController.dart';
-import 'package:brisk_rooms/models/roomModel.dart';
-import 'package:brisk_rooms/utils/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
 import 'package:get/get.dart';
@@ -31,8 +29,8 @@ class createRoomPage extends StatelessWidget {
               fit: BoxFit.fitWidth,
             ),
           ),
-          title: Text('Create New Room')),
-      body: Center(
+          title: const Text('Create New Room')),
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -81,7 +79,7 @@ class _cFormState extends State<cForm> {
           await _backend.createRoomInst(roomId, _passwordController.text).then(
             (value) {
               //_roomCtr.setRoomData(roomModel.fromMap())
-              Get.offNamed("/room/${roomId}");
+              Get.offNamed("/room/$roomId");
             },
           );
         } catch (e) {
@@ -106,9 +104,9 @@ class _cFormState extends State<cForm> {
                   TextFormField(
                     readOnly: true,
                     initialValue: roomId,
-                    decoration: InputDecoration(labelText: 'Room ID is:'),
+                    decoration: const InputDecoration(labelText: 'Room ID is:'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   TextFormField(
@@ -131,7 +129,7 @@ class _cFormState extends State<cForm> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   Hero(
                     tag: 'create',
                     child: SizedBox(
@@ -139,7 +137,7 @@ class _cFormState extends State<cForm> {
                       width: 300,
                       child: ElevatedButton(
                           onPressed: onCreateRoomPressed,
-                          child: Text('Enter Room')),
+                          child: const Text('Enter Room')),
                     ),
                   )
                 ],

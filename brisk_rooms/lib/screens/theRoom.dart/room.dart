@@ -1,18 +1,14 @@
 import 'package:brisk_rooms/screens/theRoom.dart/noAccessPage.dart';
 import 'package:brisk_rooms/screens/theRoom.dart/notepad.dart';
 import 'package:brisk_rooms/utils/consts.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../controllers/backendController.dart';
 import '../../controllers/fileController.dart';
 import '../../controllers/noteController.dart';
 import '../../controllers/roomController.dart';
-import '../../models/fileModel.dart';
 import '../../utils/colors.dart';
-import '../../utils/mySnackbar.dart';
 import 'filesView.dart';
 
 final _noteCtr = Get.put(noteController());
@@ -50,7 +46,7 @@ class _roomInitialState extends State<roomInitial> {
   Widget build(BuildContext context) {
     if (_roomCtr.getAuthStatus == false) {
       print('changing routing to noaccess page');
-      return noAccessPage();
+      return const noAccessPage();
     }
     _roomCtr.setAuthStatus(false);
     print('building room page');
@@ -61,14 +57,14 @@ class _roomInitialState extends State<roomInitial> {
         appBar: AppBar(
           centerTitle: true,
           title: Container(
-            margin: EdgeInsets.symmetric(vertical: 10),
-            padding: EdgeInsets.all(5),
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7.5),
                 color: Colors.transparent,
                 border: Border.all(width: 2, color: cHighColor)),
             child: Text("Room ID:$roomCode",
-                style: TextStyle(
+                style: const TextStyle(
                     color: cLightColor,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.w900,
@@ -99,7 +95,7 @@ class _roomInitialState extends State<roomInitial> {
                       horizontal: 20,
                       vertical: 0,
                     ),
-                    child: Center(
+                    child: const Center(
                       child: filesView(),
                     ),
                   ),
@@ -121,19 +117,19 @@ class _roomInitialState extends State<roomInitial> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     color: Colors.transparent,
                     width: double.maxFinite,
                     height: 550,
-                    child: filesView()),
-                Divider(
+                    child: const filesView()),
+                const Divider(
                   color: cLightColor,
                   thickness: 1,
                   indent: 50,
                   endIndent: 50,
                 ),
                 Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     color: Colors.transparent,
                     width: double.maxFinite,
                     height: 600,

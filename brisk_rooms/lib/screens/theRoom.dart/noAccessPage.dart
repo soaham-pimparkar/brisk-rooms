@@ -1,16 +1,6 @@
-import 'package:brisk_rooms/utils/consts.dart';
-import 'package:brisk_rooms/utils/mySnackbar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:path/path.dart';
 
-import '../../controllers/backendController.dart';
-import '../../controllers/fileController.dart';
-import '../../controllers/noteController.dart';
-import '../../controllers/roomController.dart';
-import '../../models/fileModel.dart';
 import '../../utils/colors.dart';
 
 class noAccessPage extends StatelessWidget {
@@ -37,7 +27,7 @@ class noAccessPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'You do not have access to this room!\nPlease try joining again',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -46,7 +36,7 @@ class noAccessPage extends StatelessWidget {
                   fontSize: 24,
                   color: cLightColor),
             ),
-            SizedBox(height: 35),
+            const SizedBox(height: 35),
             SizedBox(
               height: 35,
               width: 100,
@@ -54,7 +44,7 @@ class noAccessPage extends StatelessWidget {
                   onPressed: () {
                     Get.offNamed("/");
                   },
-                  child: Icon(Icons.home)),
+                  child: const Icon(Icons.home)),
             )
           ],
         ),
